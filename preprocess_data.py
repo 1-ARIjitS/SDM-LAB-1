@@ -14,52 +14,28 @@ import argparse
 # def load_json
 def load_json(json_filepath):
     print("loading the json file...")
-    with open(json_filepath) as json_file:
+    with open(json_filepath, "r") as json_file:
         data = json.load(json_file)
     return data
 
-# Cobvert JSON to CSV with basic fields
-def convert_json_to_csv(data, csv_file_path, headers):
-    # Write to CSV file
-    print("converting json to csv...")
-    with open(csv_file_path, "w", newline="", encoding="utf-8") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(headers)
-        row_data=[]
-        # Iterate over each paper
-        for paper in data:
-            # Extract data for each row
-            try:
-                row_data = [
-                    str(paper["paperId"]),
-                    str(paper["title"]),
-                    str(paper["abstract"]),
-                    str(paper["venue"]),
-                    dict(paper["publicationVenue"]),
-                    str(paper["year"]),
-                    str(paper["citationCount"]),
-                    str(paper["referenceCount"]),
-                    str(paper["fieldsOfStudy"]),
-                    list(paper["publicationTypes"]),
-                    dict(paper["journal"]),
-                    list(paper["authors"]),
-                    [citation["paperId"] for citation in paper["citations"]],
-                    [reference["paperId"] for reference in paper["references"]]
-                ]
-            except:
-                pass
-            writer.writerow(row_data)
+# Covert JSON to CSV with basic fields
+def convert_json_to_csv(json, headers, csv_folder_path):
+    # Normalize the JSON data
+    df = pd.json_normalize(json, max_level=0)
+    df= df[headers]
+    raw_data_path= os.path.join(csv_folder_path,'ml_raw_data.csv') 
+    df.to_csv(raw_data_path, index=False)
 
 # Extract keywords from an abstract using spaCy
 def extract_keywords(abstract):
     # Load English language model for spacy
     nlp = spacy.load("en_core_web_sm")
-    doc = nlp(abstract)
-    # Extracting tokens that are nouns or adjectives (you can modify this based on your requirements)
-    keywords = [token.text for token in doc if token.pos_ in ['NOUN', 'ADJ']]
-    print(keywords)
     updated_keywords=[]
     try:
+        # Extracting tokens that are nouns or adjectives (you can modify this based on your requirements)
+        doc = nlp(abstract)
+        keywords = [token.text for token in doc if token.pos_ in ['NOUN', 'ADJ']]
+        print(keywords)
         updated_keywords= random.sample(keywords, 5)
     except:
         pass
@@ -97,16 +73,30 @@ def add_keywords(df):
     # Apply the function to each row in the DataFrame
     df['keywords'] = df['abstract'].apply(extract_keywords)
     return df
+
+def add_publication_type(df):
+    print("adding publication type of each paper to the dataframe...")
+    df['publicationType']=0
+    for index, row in df.iterrows():
+        try:
+            publication_dict= ast.literal_eval(row['publicationVenue'])
+            publication_type= str(publication_dict['type'])
+            # Add the modified entry to the DataFrame
+            df.at[index, 'publicationType'] = publication_type
+        except:
+            df.at[index, 'publicationType'] = 'journal'
+    return df
+
 # remove duplicate papers
 def remove_duplicate_papers(df):
-    print("removing dupliacte papers...")
+    print("removing duplicate papers...")
     df.drop_duplicates(subset='paperId', keep='first', inplace=True)
     return df
 
 # saving it to new csv file
 def save_updated_csv(df):
     print("saving the upadted csv file...")
-    updated_csv_filepath= os.path.join(csv_folder_path, "updated_data.csv")
+    updated_csv_filepath= os.path.join(csv_folder_path, "ml_updated_data.csv")
     df.to_csv(updated_csv_filepath, index=False)
 
 # adding flags 
@@ -121,16 +111,16 @@ root_path = args.root_path
 json_file_path = args.json_path
 json_folder_path= os.path.join(root_path, 'JSON_files')
 csv_folder_path= os.path.join(root_path, 'CSV_files')
-csv_file_path= os.path.join(csv_folder_path, "raw_data.csv")
+csv_file_path= os.path.join(csv_folder_path, "ml_raw_data.csv")
 
 # loading the json file
 json_data= load_json(json_filepath= json_file_path)
 
 # Define headers for CSV file
-headers = ["paperId", "title", "abstract", "venue", "publicationVenue", "year", "citationCount", "referenceCount", "fieldOfStudy", "publicationTypes", "journal", "authors", "citations", "references"]
+headers = ["paperId", "publicationVenue", "title", "abstract", "venue", "year", "citationCount", "referenceCount", "fieldsOfStudy", "publicationTypes", "journal", "authors", "citations", "references"]
 
 # convert json to csv
-convert_json_to_csv(json_data, csv_file_path, headers)
+convert_json_to_csv(json_data, headers, csv_folder_path)
 
 # read the csv file and include reviewers
 print("reading the raw csv file...")
@@ -140,8 +130,11 @@ df_w_reviewers= add_reviewers(df)
 # change the csv file to include keywords as well
 df_w_reviwers_n_keywords= add_keywords(df_w_reviewers)
 
+# adding the type of paper like journal, review or workshop
+df_w_type= add_publication_type(df_w_reviwers_n_keywords)
+
 # remove rows with same paperId
-updated_df= remove_duplicate_papers(df_w_reviwers_n_keywords)
+updated_df= remove_duplicate_papers(df_w_type)
 
 # saving the csv file
 save_updated_csv(updated_df)
