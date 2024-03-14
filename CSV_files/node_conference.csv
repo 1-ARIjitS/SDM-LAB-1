@@ -1,0 +1,19 @@
+publicationId,publicationType,name,venue,year,issn,url
+86c43745-31d9-4c1a-b33f-ce3aa0042dbb,conference,USENIX Symposium on Operating Systems Design and Implementation,USENIX Symposium on Operating Systems Design and Implementation,2016,,
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,Neural Information Processing Systems,2015,,http://neurips.cc/
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,Neural Information Processing Systems,2020,,http://neurips.cc/
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,Neural Information Processing Systems,2012,,http://neurips.cc/
+29b9c461-963e-4d11-b2ab-92c182243942,conference,IEEE Symposium on Security and Privacy,IEEE Symposium on Security and Privacy,2016,,http://www.ieee-security.org/
+87fc9c3c-cc7f-42aa-ba71-2700729a6788,conference,ACM Asia Conference on Computer and Communications Security,ACM Asia Conference on Computer and Communications Security,2016,,https://dl.acm.org/conference/asia-ccs
+41bf9ed3-85b3-4c90-b015-150e31690253,conference,Conference on Empirical Methods in Natural Language Processing,Conference on Empirical Methods in Natural Language Processing,2002,,https://www.aclweb.org/portal/emnlp
+939c6e1d-0d17-4d6e-8a82-66d960df0e40,conference,International Conference on Learning Representations,International Conference on Learning Representations,2016,,https://iclr.cc/
+2d0a5631-36a3-47fd-a909-2b08e82bdf02,conference,International Conference on Computational Statistics,International Conference on Computational Statistics,2010,,
+41bf9ed3-85b3-4c90-b015-150e31690253,conference,Conference on Empirical Methods in Natural Language Processing,Conference on Empirical Methods in Natural Language Processing,2014,,https://www.aclweb.org/portal/emnlp
+939c6e1d-0d17-4d6e-8a82-66d960df0e40,conference,International Conference on Learning Representations,International Conference on Learning Representations,2014,,https://iclr.cc/
+167fa0ca-e88a-4ef7-a16f-bc66c457c806,conference,European Conference on Computer Vision,European Conference on Computer Vision,2006,,https://link.springer.com/conference/eccv
+63c420a6-4772-4d27-bb54-2b7f2e6635a6,conference,Security and Artificial Intelligence,Security and Artificial Intelligence,2019,,
+29b9c461-963e-4d11-b2ab-92c182243942,conference,IEEE Symposium on Security and Privacy,IEEE Symposium on Security and Privacy,2017,,http://www.ieee-security.org/
+3dbf084c-ef47-4b74-9919-047b40704538,conference,Italian National Conference on Sensors,Italian National Conference on Sensors,2021,1424-8220,http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-142001
+8fe2bc2e-b6cc-45a8-8a71-1b5a3853942e,conference,UK Workshop on Computational Intelligence,UK Workshop on Computational Intelligence,2023,,
+fc0a208c-acb7-47dc-a0d4-af8190e21d29,conference,International Conference on Machine Learning,International Conference on Machine Learning,2019,,https://icml.cc/
+3dbf084c-ef47-4b74-9919-047b40704538,conference,Italian National Conference on Sensors,Italian National Conference on Sensors,2018,1424-8220,http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-142001
