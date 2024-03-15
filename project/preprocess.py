@@ -328,7 +328,7 @@ def extract_and_process_paper_keyword_data(json_data, papers_csv_path, keywords_
         link = paper.get("url", "")
         citation_count = paper.get("citationCount", 0)
         reference_count = paper.get("referenceCount", 0)
-        year = paper.get("year", "")
+        date = paper.get("publicationDate", "")
 
         journal_info = paper.get("journal")
         pages = journal_info.get("pages") if journal_info and "pages" in journal_info else f"{random.randint(1, 100)}-{random.randint(101, 200)}"
@@ -342,7 +342,7 @@ def extract_and_process_paper_keyword_data(json_data, papers_csv_path, keywords_
             "link": link,
             "citationCount": citation_count,
             "referenceCount": reference_count,
-            "year": year,
+            "date": date,
         })
 
         if paper.get("fieldsOfStudy") is None or len(paper.get("fieldsOfStudy", [])) == 0:
