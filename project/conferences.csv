@@ -1,0 +1,103 @@
+publicationId,publicationType,name,year,venue,issn,url,edition,conferenceChair
+b55b50b1-aae7-47a7-b042-8aecc930073d,conference,International Conference on Human Factors in Computing Systems,2021,International Conference on Human Factors in Computing Systems,,http://www.acm.org/sigchi/,26,Monica Simmons
+a36dc29e-4ea1-4567-b0fe-1c06daf8bee8,conference,International Conference on Software Engineering,2021,International Conference on Software Engineering,,http://www.icse-conferences.org/,26,Nicole Burgess
+b55b50b1-aae7-47a7-b042-8aecc930073d,conference,International Conference on Human Factors in Computing Systems,2019,International Conference on Human Factors in Computing Systems,,http://www.acm.org/sigchi/,26,Jeffrey Pierce
+528ced1f-e949-4e1a-8fee-2ffbf0be551d,conference,Conference on Innovative Data Systems Research,2020,Conference on Innovative Data Systems Research,,http://cidrdb.org/,3,Monica Lynch
+b55b50b1-aae7-47a7-b042-8aecc930073d,conference,International Conference on Human Factors in Computing Systems,2019,International Conference on Human Factors in Computing Systems,,http://www.acm.org/sigchi/,24,James Jones
+528ced1f-e949-4e1a-8fee-2ffbf0be551d,conference,Conference on Innovative Data Systems Research,2019,Conference on Innovative Data Systems Research,,http://cidrdb.org/,3,Mark Simmons
+2c9ecac6-f875-4a9b-acc2-10bd9f6782df,conference,Technical Symposium on Computer Science Education,2019,Technical Symposium on Computer Science Education,,http://www.sigcse.org/,22,Samantha Williamson
+c85dfc25-bcef-4719-9997-f41ad334d998,conference,International Symposium on Intelligent Data Analysis,2018,International Symposium on Intelligent Data Analysis,,http://www.wikicfp.com/cfp/program?id=1517,9,Juan Mccann
+4a8bbf74-8b02-49b1-ad58-836790bbc79f,conference,International Conference on Enterprise Information Systems,2016,International Conference on Enterprise Information Systems,,http://www.iceis.org/,21,Samantha Woods
+1ec5a55c-414e-4f79-b7dc-48e1dba3618e,conference,IEEE Region 10 Conference,2016,IEEE Region 10 Conference,,,10,Jordan Rogers
+66c268f7-ba60-443f-919d-e2c297910401,conference,International Conference on Computational Collective Intelligence,2016,International Conference on Computational Collective Intelligence,,http://www.wikicfp.com/cfp/program?id=1302,8,Terri Rodriguez
+e27c1a12-37ca-4b72-bb77-352a151f78e9,conference,IEEE International Enterprise Distributed Object Computing Conference,2014,IEEE International Enterprise Distributed Object Computing Conference,,http://www.edocconference.org/,4,Mrs. Caroline Garner
+74f47cf8-2839-4a56-959a-524dd0ed9e3e,conference,International Conference on Extending Database Technology,2013,International Conference on Extending Database Technology,,http://www.edbt.org/,7,Kyle Campbell
+764e3630-ddac-4c21-af4b-9d32ffef082e,conference,IEEE International Conference on Data Engineering,2010,IEEE International Conference on Data Engineering,,http://www.wikicfp.com/cfp/program?id=1331,19,Kenneth Shaffer
+764e3630-ddac-4c21-af4b-9d32ffef082e,conference,IEEE International Conference on Data Engineering,2013,IEEE International Conference on Data Engineering,,http://www.wikicfp.com/cfp/program?id=1331,10,Sara Carpenter
+bf4a4b0f-eb61-4109-82ca-5fdd5c2d357f,conference,"International Conference on Teaching, Assessment, and Learning for Engineering",2013,"International Conference on Teaching, Assessment, and Learning for Engineering",,,10,Eugene Rodriguez
+c9e16b3c-2fdf-4b4c-82bf-5cdf3d3435b7,conference,American Medical Informatics Association Annual Symposium,2012,American Medical Informatics Association Annual Symposium,,https://knowledge.amia.org/,3,Stacy Barber
+cdd7667c-05b7-4d41-83f6-3dadd7d418c7,conference,USENIX Workshop on Hot Topics in Storage and File Systems,2013,USENIX Workshop on Hot Topics in Storage and File Systems,,,27,Samantha Warner
+7b344f25-64fc-416b-901d-07808b4e798f,conference,International Conference on Data Warehousing and Knowledge Discovery,2011,International Conference on Data Warehousing and Knowledge Discovery,,http://www.dexa.org/,6,Rachel Meyer
+9c119da6-ab17-4403-854e-786882dbf352,conference,Decision Support Systems,2010,Decision Support Systems,0167-9236,https://www.journals.elsevier.com/decision-support-systems,27,Megan Hebert
+6a1abd85-3eca-4491-ac76-0134749a10fc,conference,International Workshop on Data Warehousing and OLAP,2009,International Workshop on Data Warehousing and OLAP,,http://www.wikicfp.com/cfp/program?id=748,30,Maria White
+640b2c9a-6fb2-4333-8780-d31aa3c411cf,conference,International Database Engineering and Applications Symposium,2009,International Database Engineering and Applications Symposium,2338-4778,http://www.wikicfp.com/cfp/program?id=1525,20,Alyssa Parrish
+d8b9da69-2726-4c77-bdf7-9e96f58c67b2,conference,International Conference on Signal Processing Systems,2009,International Conference on Signal Processing Systems,,http://www.icsps.org/,28,Christopher Sutton
+3ed98179-bff8-4560-bcf0-7b4171195aa4,conference,World Summit on the Knowledge Society,2009,World Summit on the Knowledge Society,,http://www.wikicfp.com/cfp/program?id=3163,10,Duane Morgan
+764e3630-ddac-4c21-af4b-9d32ffef082e,conference,IEEE International Conference on Data Engineering,2011,IEEE International Conference on Data Engineering,,http://www.wikicfp.com/cfp/program?id=1331,11,Christopher Bailey
+d80d58be-58fc-4181-a397-5ac6fd976a47,conference,ACM Symposium on Applied Computing,2009,ACM Symposium on Applied Computing,,https://www.acm.org/publications,27,Mary Carey
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,2015,Neural Information Processing Systems,,http://neurips.cc/,14,Michael Tran
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,2020,Neural Information Processing Systems,,http://neurips.cc/,10,Joshua Martinez
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,2012,Neural Information Processing Systems,,http://neurips.cc/,11,Paige Paul
+29b9c461-963e-4d11-b2ab-92c182243942,conference,IEEE Symposium on Security and Privacy,2016,IEEE Symposium on Security and Privacy,,http://www.ieee-security.org/,13,Richard Ortiz
+87fc9c3c-cc7f-42aa-ba71-2700729a6788,conference,ACM Asia Conference on Computer and Communications Security,2016,ACM Asia Conference on Computer and Communications Security,,https://dl.acm.org/conference/asia-ccs,22,Henry Powers
+41bf9ed3-85b3-4c90-b015-150e31690253,conference,Conference on Empirical Methods in Natural Language Processing,2002,Conference on Empirical Methods in Natural Language Processing,,https://www.aclweb.org/portal/emnlp,21,Jack Cooper
+939c6e1d-0d17-4d6e-8a82-66d960df0e40,conference,International Conference on Learning Representations,2016,International Conference on Learning Representations,,https://iclr.cc/,5,Henry Griffin
+2d0a5631-36a3-47fd-a909-2b08e82bdf02,conference,International Conference on Computational Statistics,2010,International Conference on Computational Statistics,,,21,Mrs. Breanna Davis
+939c6e1d-0d17-4d6e-8a82-66d960df0e40,conference,International Conference on Learning Representations,2014,International Conference on Learning Representations,,https://iclr.cc/,6,Steven Stevens
+41bf9ed3-85b3-4c90-b015-150e31690253,conference,Conference on Empirical Methods in Natural Language Processing,2014,Conference on Empirical Methods in Natural Language Processing,,https://www.aclweb.org/portal/emnlp,23,Jordan Poole
+167fa0ca-e88a-4ef7-a16f-bc66c457c806,conference,European Conference on Computer Vision,2006,European Conference on Computer Vision,,https://link.springer.com/conference/eccv,16,Nicole Jones
+63c420a6-4772-4d27-bb54-2b7f2e6635a6,conference,Security and Artificial Intelligence,2019,Security and Artificial Intelligence,,,16,Bonnie Watkins
+29b9c461-963e-4d11-b2ab-92c182243942,conference,IEEE Symposium on Security and Privacy,2017,IEEE Symposium on Security and Privacy,,http://www.ieee-security.org/,23,Cody Barr
+3dbf084c-ef47-4b74-9919-047b40704538,conference,Italian National Conference on Sensors,2021,Italian National Conference on Sensors,1424-8220,http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-142001,30,Ethan Savage
+8fe2bc2e-b6cc-45a8-8a71-1b5a3853942e,conference,UK Workshop on Computational Intelligence,2023,UK Workshop on Computational Intelligence,,,30,Tracy Ford
+fc0a208c-acb7-47dc-a0d4-af8190e21d29,conference,International Conference on Machine Learning,2019,International Conference on Machine Learning,,https://icml.cc/,26,Jason Guzman
+3dbf084c-ef47-4b74-9919-047b40704538,conference,Italian National Conference on Sensors,2018,Italian National Conference on Sensors,1424-8220,http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-142001,3,Jason Cox
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2016,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,13,Elizabeth Copeland
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,2019,Neural Information Processing Systems,,http://neurips.cc/,14,Michael Guzman
+167fa0ca-e88a-4ef7-a16f-bc66c457c806,conference,European Conference on Computer Vision,2020,European Conference on Computer Vision,,https://link.springer.com/conference/eccv,6,Jordan Moore
+a0edb93b-1e95-4128-a295-6b1659149cef,conference,Knowledge Discovery and Data Mining,2019,Knowledge Discovery and Data Mining,,http://www.acm.org/sigkdd/,14,Terry Day
+c7bde2ee-6ad5-49c7-9498-a01e46c162eb,conference,Extended Semantic Web Conference,2019,Extended Semantic Web Conference,,https://link.springer.com/conference/esws,8,Clifford Robinson
+3dbf084c-ef47-4b74-9919-047b40704538,conference,Italian National Conference on Sensors,2018,Italian National Conference on Sensors,1424-8220,http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-142001,13,Amber Davis
+d43f0f26-43c9-4009-a1ed-63624522c166,conference,International Conference on Intelligent User Interfaces,2018,International Conference on Intelligent User Interfaces,,http://www.iuiconf.org/,29,Andrew Martin
+6bf48d72-eba2-4918-b9a0-153280062513,conference,International Computer Science Conference,2017,International Computer Science Conference,,http://icsc.eecs.uci.edu/,14,Keith Fowler
+89a946e2-e2c0-440a-8897-3eaaad3ecc54,conference,European Symposium on Programming,2017,European Symposium on Programming,,https://link.springer.com/conference/esop,8,Brett Luna
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2014,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,12,James Hicks
+8cd29583-6084-42c6-b808-97d2f921c885,conference,International Summit on eHealth,2016,International Summit on eHealth,,,21,Kendra Howell
+6a1abd85-3eca-4491-ac76-0134749a10fc,conference,International Workshop on Data Warehousing and OLAP,2015,International Workshop on Data Warehousing and OLAP,,http://www.wikicfp.com/cfp/program?id=748,12,Brian Dunn
+789de21a-15ba-47d5-b661-3455a9771114,conference,IOTA Programming System,2016,IOTA Programming System,,,8,Andrea Mcfarland
+76c066f7-84b3-469f-a04c-4d2bc8caa3fe,conference,Computer-Aided Architectural Design Futures,2015,Computer-Aided Architectural Design Futures,,,29,Paul Martinez
+79ad93e3-8152-45a5-a97c-d6c327592c09,conference,"IEEE International Conference on Electrical, Computer and Communication Technologies",2015,"IEEE International Conference on Electrical, Computer and Communication Technologies",,,28,Paul Barajas
+efa3ff7a-4d96-44a1-a022-a683408919b6,conference,International Workshop on the Semantic Web,2015,International Workshop on the Semantic Web,,,20,Julie Cox
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2021,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,9,Christopher Mcdonald
+7431ff67-91dc-41fa-b322-1b1ca657025f,conference,International Conference on Information and Knowledge Management,2013,International Conference on Information and Knowledge Management,,http://www.cikm.org/,1,Allen Young
+7654260e-79f9-45c5-9663-d72027cf88f3,conference,IEEE International Conference on Computer Vision,2021,IEEE International Conference on Computer Vision,,https://ieeexplore.ieee.org/xpl/conhome/1000149/all-proceedings,6,Jose Vance
+7654260e-79f9-45c5-9663-d72027cf88f3,conference,IEEE International Conference on Computer Vision,2021,IEEE International Conference on Computer Vision,,https://ieeexplore.ieee.org/xpl/conhome/1000149/all-proceedings,10,Joe Mcdonald
+7654260e-79f9-45c5-9663-d72027cf88f3,conference,IEEE International Conference on Computer Vision,2019,IEEE International Conference on Computer Vision,,https://ieeexplore.ieee.org/xpl/conhome/1000149/all-proceedings,21,David Davis
+d66cbe5a-07c4-4acc-a4a1-2171d6c074e0,conference,European Conference on Software Architecture,2013,European Conference on Software Architecture,,https://link.springer.com/conference/ecsa,16,Michael Fowler
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2020,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,22,Jessica Li
+70713d09-6e4b-4554-9d3f-94d08aba320c,conference,International Workshop on Semantic Evaluation,2017,International Workshop on Semantic Evaluation,,,17,Victor Chan
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2020,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,27,Rachel Tucker
+49c72bc9-58a4-462b-93a0-86635b48a533,conference,IFIP Working Conference on Database Semantics,2013,IFIP Working Conference on Database Semantics,,http://wise.vub.ac.be/ifipwg26/,10,Nicholas Tapia
+625842ea-b2ac-4832-aa41-6bd142cfc9d9,conference,Annual Conference of the IEEE Industrial Electronics Society,2013,Annual Conference of the IEEE Industrial Electronics Society,2162-4704,http://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000352,10,Justin Lucas
+8107ca1c-f651-4769-86dc-3d94a7b5ac26,conference,International Conference on Database Systems for Advanced Applications,2013,International Conference on Database Systems for Advanced Applications,,http://www.dasfaa.org/,10,Misty Thompson
+95518f4c-a5e2-4150-b610-9b1eba46e759,conference,Uncertainty Reasoning for the Semantic Web,2013,Uncertainty Reasoning for the Semantic Web,,,8,William Marquez
+1e33b3be-b2ab-46e9-96e8-d4eb4bad6e44,conference,Annual Meeting of the Association for Computational Linguistics,2016,Annual Meeting of the Association for Computational Linguistics,,https://www.aclweb.org/anthology/venues/acl/,30,Brittany Hart
+e795213e-9a07-4d48-a477-6c05448b9a72,conference,IEEE Symposium on Computational Intelligence in Bioinformatics and Computational Biology,2020,IEEE Symposium on Computational Intelligence in Bioinformatics and Computational Biology,,http://www.cibcb.org/,21,Krista Newman
+3f2626a8-9d78-42ca-9e0d-4b853b59cdcc,conference,IEEE International Conference on Robotics and Automation,2017,IEEE International Conference on Robotics and Automation,2152-4092,http://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000639,7,Jerry Butler
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2016,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,12,Lindsey Cantrell
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2020,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,6,Elizabeth Scott
+4b02e809-1c26-4203-b9ba-311a418f664b,conference,International Conference on 3D Vision,2018,International Conference on 3D Vision,,,23,Maria Smith
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2018,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,16,Dr. Stephanie Shah
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2018,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,1,Pamela Wood
+167fa0ca-e88a-4ef7-a16f-bc66c457c806,conference,European Conference on Computer Vision,2018,European Conference on Computer Vision,,https://link.springer.com/conference/eccv,6,Tracy Wood
+78a7fbcc-41c5-4258-b633-04b8637d4a9f,conference,British Machine Vision Conference,2017,British Machine Vision Conference,,http://www.bmva.org/bmvc/,16,David Cooper
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2016,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,12,David Moore
+37275deb-3fcf-4d16-ae77-95db9899b1f3,conference,IEEE/RJS International Conference on Intelligent RObots and Systems,2019,IEEE/RJS International Conference on Intelligent RObots and Systems,,http://www.iros.org/,7,Emily Whitehead
+167fa0ca-e88a-4ef7-a16f-bc66c457c806,conference,European Conference on Computer Vision,2018,European Conference on Computer Vision,,https://link.springer.com/conference/eccv,3,Frederick Bell
+167fa0ca-e88a-4ef7-a16f-bc66c457c806,conference,European Conference on Computer Vision,2018,European Conference on Computer Vision,,https://link.springer.com/conference/eccv,12,Stacey Maldonado
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,2019,Neural Information Processing Systems,,http://neurips.cc/,28,Raymond Pearson
+a8f26d13-e373-4e48-b57b-ef89bf48f4db,conference,Asian Conference on Computer Vision,2016,Asian Conference on Computer Vision,,http://www.cvl.iis.u-tokyo.ac.jp/afcv/,29,April Valenzuela
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2019,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,16,Connor White
+41bf9ed3-85b3-4c90-b015-150e31690253,conference,Conference on Empirical Methods in Natural Language Processing,2021,Conference on Empirical Methods in Natural Language Processing,,https://www.aclweb.org/portal/emnlp,6,Deanna Jackson
+47e4f61e-9b0e-431f-bd17-e534b53c655b,conference,International Conference on Intelligent Computing,2012,International Conference on Intelligent Computing,,http://www.wikicfp.com/cfp/program?id=1382,8,Catherine Graham
+e6904c24-9546-4135-8344-e3999e375558,conference,Network and Distributed System Security Symposium,2012,Network and Distributed System Security Symposium,,http://www.isoc.org/,12,Melanie Nelson
+78a7fbcc-41c5-4258-b633-04b8637d4a9f,conference,British Machine Vision Conference,2019,British Machine Vision Conference,,http://www.bmva.org/bmvc/,20,Cynthia Espinoza
+dea8d7a8-c89e-4de9-bde3-0787594a055f,conference,International Conference on Data Technologies and Applications,2019,International Conference on Data Technologies and Applications,2306-5729,http://www.dataconference.org/,15,Jeffery Davis
+41bf9ed3-85b3-4c90-b015-150e31690253,conference,Conference on Empirical Methods in Natural Language Processing,2015,Conference on Empirical Methods in Natural Language Processing,,https://www.aclweb.org/portal/emnlp,25,Joseph Lam
+768b87bb-8a18-4d9c-a161-4d483c776bcf,conference,Computer Vision and Pattern Recognition,2017,Computer Vision and Pattern Recognition,1063-6919,https://ieeexplore.ieee.org/xpl/conhome.jsp?punumber=1000147,26,Bryan Ellis
+f8e3f8d0-0f40-48c0-b3c0-0c540237b859,conference,Human Language Technology - The Baltic Perspectiv,1995,Human Language Technology - The Baltic Perspectiv,,,26,Stacey Tran
+30a8645d-22d4-42e2-b3f6-304bf4ce3a02,conference,International Conference on Computational Logic,1999,International Conference on Computational Logic,,,17,Kayla Schroeder
+4144b5fb-0a80-4663-8ebf-80ca0c47231a,conference,Vision,2011,Vision,0917-1142,http://www.e-helvetica.nb.admin.ch/directAccess?callnumber=bel-1000285,19,Aaron Baldwin
+8113a511-e0d9-4231-a1bc-0bf5d0212a4e,conference,Symposium on the Theory of Computing,1996,Symposium on the Theory of Computing,,http://acm-stoc.org/,25,Alexander Adams
+d9720b90-d60b-48bc-9df8-87a30b9a60dd,conference,Neural Information Processing Systems,2014,Neural Information Processing Systems,,http://neurips.cc/,25,Amanda Wright
+7654260e-79f9-45c5-9663-d72027cf88f3,conference,IEEE International Conference on Computer Vision,2007,IEEE International Conference on Computer Vision,,https://ieeexplore.ieee.org/xpl/conhome/1000149/all-proceedings,13,Krista Moore
