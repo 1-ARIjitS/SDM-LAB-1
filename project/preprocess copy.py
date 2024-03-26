@@ -431,41 +431,27 @@ def extract_and_process_paper_keyword_data(json_data, papers_csv_path, keywords_
     print(f"Paper-Keyword relationships saved to {paper_keyword_csv_path}")
    
 
-def extract_citations_and_save(json_data, papers_csv_path, citations_csv_path):
-    # Load papers data
-    papers_df = pd.read_csv(papers_csv_path)
-
-    # Initialize list for paper citations
-    paper_citations = []
-
-    for paper in json_data:
-        paper_id = paper.get("paperId")
-        citations = paper.get("citations", [])
-        
-        for citation in citations:
-            cited_paper_id = citation.get("paperId")
-            cited_paper_title = citation.get("title")
-            
-            # Ensure the citation is not self-referencing
-            if paper_id != cited_paper_id:
-                paper_citations.append({
-                    "paper_id": paper_id,
-                    "cited_paper_id": cited_paper_id,
-                    "title": cited_paper_title
-                })
+def extract_citations_and_save(json_data, citations_csv_path):
     
-    # Convert list to DataFrame
-    paper_citations_df = pd.DataFrame(paper_citations)
+    papers_set = {paper["paperId"] for paper in json_data}
 
-    # Merge with papers_df to ensure cited_paper_id exists in the dataset and get the title
-    paper_citations_df = paper_citations_df.merge(papers_df[['paperId', 'title']], how='left', left_on='cited_paper_id', right_on='paperId')
-    paper_citations_df.drop(['paperId'], axis=1, inplace=True)
-    paper_citations_df.rename(columns={'title_y': 'cited_paper_title'}, inplace=True)
+# Initialize a dictionary to hold paper citation relationships
+    paper_cites_paper = {"paper_id": [], "cited_paper_id": []}
 
-    # Save to CSV
-    paper_citations_df.to_csv(citations_csv_path, index=False)
+    # Generate citation relationships
+    for cited_paper in papers_set:
+        for _ in range(randint(0, 50)):
+            # Choose a paper to cite the current cited_paper, ensuring it's not citing itself
+            paper = choice(list(papers_set - {cited_paper}))
+
+            # Append the relationship to the dictionary
+            paper_cites_paper['paper_id'].append(paper)
+            paper_cites_paper['cited_paper_id'].append(cited_paper)
+
+    # Convert the dictionary to a DataFrame
+    pcp_df = pd.DataFrame.from_dict(paper_cites_paper)
+    pcp_df.to_csv(citations_csv_path, index=False)
     print(f"Citations data saved to {citations_csv_path}")
-
 
 def process_journal_data(json_data, csv_folder_path):
     print("Creating journal and editor assignment data...")
