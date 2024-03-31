@@ -48,17 +48,30 @@ def execute_queries(uri, user, password):
       print("-------------------")
       print("QUERY 3 RESULTS")
       print("-------------------")
-      query_2= """MATCH(p:Paper) - [r1:cites] -> (citedP:Paper) - [r2:published_in] -> (j:Journal) 
-                  WITH j, r2.year as currYear, COUNT(r1) AS totalCitations
-                  MATCH (p2:Paper) - [r3:published_in] -> (j)
-                  WHERE r3.year = currYear - 1 OR r3.year = currYear - 2
-                  WITH j, currYear, totalCitations, COUNT(r3) AS totalPublications
-                  WHERE totalPublications > 0
-                  RETURN j.name AS journalName,
-                  currYear AS yearOfPublication,
-                  toFloat(totalCitations)/totalPublications AS impactFactor
-                  ORDER BY impactFactor DESC;"""
-      result= session.run(query_2)
+     // query_3= """MATCH(p:Paper) - [r1:cites] -> (citedP:Paper) - [r2:published_in] -> (j:Journal) 
+       //           WITH j, r2.year as currYear, COUNT(r1) AS totalCitations
+         //         MATCH (p2:Paper) - [r3:published_in] -> (j)
+           //       WHERE r3.year = currYear - 1 OR r3.year = currYear - 2
+            //        WITH j, currYear, totalCitations, COUNT(r3) AS totalPublications
+            //      WHERE totalPublications > 0
+             //     RETURN j.name AS journalName,
+             //     currYear AS yearOfPublication,
+              //    toFloat(totalCitations)/totalPublications AS impactFactor
+              //    ORDER BY impactFactor DESC;"""
+        query_3= """
+                MATCH (p:Paper)-[:cites]->(citedP:Paper)-[:published_in]->(j:Journal)
+                WITH j, date(citedP.date).year AS yearPublished, COUNT(p) AS totalCitations
+                WHERE yearPublished >= date().year - 2 AND yearPublished <= date().year - 1
+                WITH j, yearPublished, totalCitations
+                MATCH (p2:Paper)-[:published_in]->(j2:Journal)
+                WHERE date(p2.date).year = yearPublished AND j2 = j
+                WITH j.name AS journalName, yearPublished + 1 AS yearOfCitation, SUM(totalCitations) AS citations, COUNT(p2) AS totalPublications
+                WHERE totalPublications > 0
+                RETURN journalName, yearOfCitation, toFloat(citations) / totalPublications AS impactFactor
+                ORDER BY impactFactor DESC; """
+
+
+      result= session.run(query_3)
       records = list(result)
       summary = result.consume()
       for record in records:
