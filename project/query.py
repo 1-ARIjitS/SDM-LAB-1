@@ -63,15 +63,27 @@ def execute_queries(uri, user, password):
       print("-------------------")
       print("QUERY 4 RESULTS")
       print("-------------------")
-      query_2= """MATCH(a:Author) - [r1:writes] -> (p1:Paper) - [r2:cites] -> (p2:Paper)
-                  WITH a, p2, COLLECT(p1) as papers
-                  WITH a, p2, RANGE(1, SIZE(papers)) AS listOfPapers
-                  UNWIND listOfPapers AS lp
-                  WITH a, lp AS currHIndex, count(p2) AS citedPapers
-                  WHERE currHIndex <= citedPapers
-                  RETURN distinct a.name AS authorName,
-                  currHIndex as hIndex
-                  ORDER BY currHIndex DESC;"""
+     // query_2= """// MATCH(a:Author) - [r1:writes] -> (p1:Paper) - [r2:cites] -> (p2:Paper)
+                  // WITH a, p2, COLLECT(p1) as papers
+                 // WITH a, p2, RANGE(1, SIZE(papers)) AS listOfPapers
+                  // UNWIND listOfPapers AS lp
+                  // WITH a, lp AS currHIndex, count(p2) AS citedPapers
+                  // WHERE currHIndex <= citedPapers
+                  // RETURN distinct a.name AS authorName,
+                  // currHIndex as hIndex
+                  //ORDER BY currHIndex DESC;"""
+
+        query_4 = """ MATCH (a:Author)-[:writes]->(p:Paper)
+                OPTIONAL MATCH (p)<-[:cites]-(citingPaper:Paper)
+                WITH a, p, COUNT(citingPaper) AS citations
+                ORDER BY citations DESC
+                WITH a, COLLECT(citations) AS citationCounts
+                UNWIND RANGE(1, SIZE(citationCounts)) AS idx
+                WITH a, idx AS potentialHIndex, citationCounts
+                WHERE citationCounts[idx-1] >= potentialHIndex
+                RETURN a.name AS authorName, MAX(potentialHIndex) AS hIndex
+                ORDER BY hIndex DESC;
+                 """
       result= session.run(query_2)
       records = list(result)
       summary = result.consume()
