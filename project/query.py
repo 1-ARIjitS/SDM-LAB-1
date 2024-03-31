@@ -26,11 +26,17 @@ def execute_queries(uri, user, password):
       print("-------------------")
       print("QUERY 2 RESULTS")
       print("-------------------")
-      query_2= """MATCH (a:Author) - [:writes] -> (p:Paper) - [:presented_in] -> (c:Conference)
-                  WITH c.name as conferenceName, a, COUNT(DISTINCT c.edition) AS distinctEditions
-                  WHERE distinctEditions >= 4
-                  RETURN distinct a.name as authorName, conferenceName,
-                  distinctEditions as numOfEditionsPresented;"""
+     // query_2= """MATCH (a:Author) - [:writes] -> (p:Paper) - [:presented_in] -> (c:Conference)
+               //   WITH c.name as conferenceName, a, COUNT(DISTINCT c.edition) AS distinctEditions
+              //    WHERE distinctEditions >= 4
+              //    RETURN distinct a.name as authorName, conferenceName,
+              //    distinctEditions as numOfEditionsPresented;"""
+        query_2 = """ MATCH (a:Author) - [:writes] -> (p:Paper) - [:presented_in] -> (c:Conference)
+            WITH a, c.name AS conferenceName, COUNT(DISTINCT c.edition) AS distinctEditions
+            WHERE distinctEditions >= 4
+            RETURN DISTINCT a.name AS authorName, conferenceName, distinctEditions AS numOfEditionsPresented
+            ORDER BY authorName, conferenceName;
+                """
       result= session.run(query_2)
       records = list(result)
       summary = result.consume()
@@ -84,7 +90,7 @@ def execute_queries(uri, user, password):
                 RETURN a.name AS authorName, MAX(potentialHIndex) AS hIndex
                 ORDER BY hIndex DESC;
                  """
-      result= session.run(query_2)
+      result= session.run(query_4)
       records = list(result)
       summary = result.consume()
       for record in records:
