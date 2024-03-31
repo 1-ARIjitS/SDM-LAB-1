@@ -31,11 +31,11 @@ def execute_queries(uri, user, password):
               //    WHERE distinctEditions >= 4
               //    RETURN distinct a.name as authorName, conferenceName,
               //    distinctEditions as numOfEditionsPresented;"""
-        query_2 = """ MATCH (a:Author) - [:writes] -> (p:Paper) - [:presented_in] -> (c:Conference)
-            WITH a, c.name AS conferenceName, COUNT(DISTINCT c.edition) AS distinctEditions
-            WHERE distinctEditions >= 4
-            RETURN DISTINCT a.name AS authorName, conferenceName, distinctEditions AS numOfEditionsPresented
-            ORDER BY authorName, conferenceName;
+        query_2 = """MATCH (a:Author) - [:writes] -> (p:Paper) - [:presented_in] -> (c:Conference)
+                    WITH a, c.name AS conferenceName, COUNT(DISTINCT c.edition) AS distinctEditions
+                    WHERE distinctEditions >= 4
+                    RETURN conferenceName, collect(a.name) AS CommunityMember, distinctEditions AS numOfEditionsPresented
+                    ORDER BY numOfEditionsPresented DESC;
                 """
       result= session.run(query_2)
       records = list(result)
