@@ -352,32 +352,42 @@ print("Review data with decisions and majority acceptance saved.")
 
 
 
+
+database_keywords_set = set(['data management', 'indexing', 'data modeling', 'big data', 'data processing', 'data storage', 'data querying'])
+
 def extract_keywords(abstract):
-    if not abstract:
+    if abstract is None:
         return []
-    doc = nlp(abstract)
-    return [token.text for token in doc if token.pos_ in ['NOUN', 'ADJ']]
+    doc = nlp(abstract.lower())  
+    return [token.text for token in doc if token.pos_ in ['NOUN', 'ADJ'] and not token.is_stop]
 
-
-def add_keywords(df):
-    df['keywords'] = df['abstract'].apply(extract_keywords)
-    return df
 
 
 def extract_and_process_paper_keyword_data(json_data, papers_csv_path, keywords_csv_path, paper_keyword_csv_path):
     papers = []
-    keywords_data = {"ID": [], "name": [], "domain": [], "keyword_abstract": []}
+    keywords_data = {"ID": [], "name": [], "domain": []}
     paper_has_keywords = {"START_ID": [], "END_ID": []}
     keywords_dict = {}
-
-    for paper in json_data:
+    
+    # Pre-populate keywords_dict with database keywords to ensure they're included
+    for kw in database_keywords_set:
+        kw_id = str(uuid.uuid4())  # Generate a unique ID for each keyword
+        keywords_dict[kw] = kw_id
+        keywords_data["ID"].append(kw_id)
+        keywords_data["name"].append(kw)
+        keywords_data["domain"].append("Database")  # Assign the "Database" domain
+        
+    for paper in json_data:     
+    
+        abstract = paper.get("abstract", "")
+        extracted_keywords = extract_keywords(abstract)
+        fields_of_study = paper.get("fieldsOfStudy", []) or []
+        # default_domain = fields_of_study[0] if fields_of_study else "Unspecified"
         paper_id = paper.get("paperId")
         title = paper.get("title", "")
-        abstract = paper.get("abstract", "")
         doi = paper.get("externalIds", {}).get("DOI", "")
         link = paper.get("url", "")
         citation_count = paper.get("citationCount", 0)
-        # reference_count = paper.get("referenceCount", 0)
         date = paper.get("publicationDate", "")
 
         journal_info = paper.get("journal")
@@ -391,45 +401,43 @@ def extract_and_process_paper_keyword_data(json_data, papers_csv_path, keywords_
             "DOI": doi,
             "link": link,
             "citationCount": citation_count,
-            # "referenceCount": reference_count,
             "date": date,
-        })
+                })
 
-        if paper.get("fieldsOfStudy") is None or len(paper.get("fieldsOfStudy", [])) == 0:
+        all_keywords = set(fields_of_study + extracted_keywords)
+
+        # Ensure database_keywords_set keywords are considered
+        all_keywords.update(database_keywords_set)
+
+        for keyword in all_keywords:
+            if keyword not in keywords_dict:
+                # For new keywords not in database_keywords_set
+                keyword_id = str(uuid.uuid4())
+                keywords_dict[keyword] = keyword_id
+                domain = fields_of_study[0] if fields_of_study else "Unspecified"
+                keywords_data["ID"].append(keyword_id)
+                keywords_data["name"].append(keyword)
+                keywords_data["domain"].append(domain if keyword not in database_keywords_set else "Database")
+
             paper_has_keywords["START_ID"].append(paper.get("paperId"))
-            paper_has_keywords["END_ID"].append(choice(list(keywords_dict.values())))
-        else:
-            for fs in paper.get("fieldsOfStudy"):
-                fs_id = str(uuid.uuid4())
-                if fs not in keywords_dict:
-                    keywords_data["ID"].append(fs_id)
-                    keywords_data["name"].append(fs)
-                    keywords_data["domain"].append(paper.get("fieldsOfStudy")[0])
-                    keywords_data["keyword_abstract"].append(extract_keywords(abstract))
+            paper_has_keywords["END_ID"].append(keywords_dict[keyword])
 
-                k_id = keywords_dict.setdefault(fs, fs_id)
+        # Convert dictionaries to pandas DataFrames
+    paper_df = pd.DataFrame(papers)
+    paper_df['citationCount'] = paper_df['citationCount'].fillna(0).astype(int)
 
-                paper_has_keywords["START_ID"].append(paper.get("paperId"))
-                paper_has_keywords["END_ID"].append(k_id)
+    keywords_df = pd.DataFrame.from_dict(keywords_data)
+    paper_keyword_relationship_df = pd.DataFrame(paper_has_keywords)
 
-
-    # pd.DataFrame(papers).to_csv(papers_csv_path, index=False)
-    
-    paper_df_1 = pd.DataFrame(papers)
-    paper_df_1['citationCount'] = paper_df_1['citationCount'].fillna(0)
-    paper_df_1['citationCount'] = paper_df_1['citationCount'].astype(int)
-
-    # Save the cleaned DataFrame to CSV
-    paper_df_1.to_csv(papers_csv_path, index=False)
-    
-    pd.DataFrame(keywords_data).to_csv(keywords_csv_path, index=False)
-    pd.DataFrame(paper_has_keywords).to_csv(paper_keyword_csv_path, index=False)
-
+    # Save DataFrames to CSV files
+    paper_df.to_csv(papers_csv_path, index=False)
+    keywords_df.to_csv(keywords_csv_path, index=False)
+    paper_keyword_relationship_df.to_csv(paper_keyword_csv_path, index=False)
 
     print(f"Papers data saved to {papers_csv_path}")
     print(f"Keywords data saved to {keywords_csv_path}")
     print(f"Paper-Keyword relationships saved to {paper_keyword_csv_path}")
-   
+
 
 def extract_citations_and_save(json_data, citations_csv_path):
     
@@ -452,6 +460,8 @@ def extract_citations_and_save(json_data, citations_csv_path):
     pcp_df = pd.DataFrame.from_dict(paper_cites_paper)
     pcp_df.to_csv(citations_csv_path, index=False)
     print(f"Citations data saved to {citations_csv_path}")
+
+
 
 def process_journal_data(json_data, csv_folder_path):
     print("Creating journal and editor assignment data...")
@@ -755,7 +765,7 @@ if __name__ == "__main__":
     flattened_data = flatten_data(json_data)
     extract_and_save_authors(json_data, root_path)
     extract_and_process_paper_keyword_data(json_data, papers_csv_path, keywords_csv_path, paper_keyword_csv_path)
-    extract_citations_and_save(json_data, papers_csv_path, citations_csv_path)
+    extract_citations_and_save(json_data, citations_csv_path)
     process_journal_data(json_data, csv_folder_path)
     extract_and_save_conferences(json_data, root_path)
     extract_and_save_workshop(json_data, csv_folder_path)
