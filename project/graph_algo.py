@@ -1,9 +1,22 @@
 from neo4j import GraphDatabase
+import pandas as pd
 
 def execute_queries(uri, user, password):
     driver = GraphDatabase.driver(uri, auth=(user, password))
       
     with driver.session() as session:
+      def run_query_and_export_to_csv(query, csv_file_name, query_description):
+            print(f"\nExecuting query: {query_description}")
+            result= session.run(query)
+            records = list(result)
+            df = pd.DataFrame(records)
+            csv_file_path = f"D:/BDMA/UPC/SDM/LAB/LAB1/project/Algorithms/{csv_file_name}.csv"
+                    # Print the DataFrame to console
+            print(f"Results for '{query_description}':")
+            print(df)
+                    # Save the DataFrame to a CSV file
+            df.to_csv(csv_file_path, index=False)
+            print(f"Query '{query_description}' completed and saved to '{csv_file_path}'")
 
       # ALGORITHM 1- using the node similarity algorithm to find papers that have the similar keywords
       print("--------------------------------------")
@@ -24,15 +37,11 @@ def execute_queries(uri, user, password):
       print("Running the graph algorithm on the projected graph...")
       algo_query1= """CALL gds.nodeSimilarity.stream('proj_paper_keyword', { topK: 1 })
                   YIELD node1, node2, similarity
-                  WHERE similarity>0.5 and similarity<1.0
+                  WHERE similarity>0.5
                   RETURN gds.util.asNode(node1).title AS paper1, gds.util.asNode(node2).title AS paper2, similarity
                   ORDER BY similarity DESC;
                 """
-      result= session.run(algo_query1)
-      records = list(result)
-      summary = result.consume()
-      for record in records:
-         print(record)
+      run_query_and_export_to_csv(algo_query1, "similarity", "node similarity algorithm")
 
       # ALGORITHM 2- using Page rank algorithm to find the papers with most citations
       print("--------------------------------")
@@ -58,11 +67,7 @@ def execute_queries(uri, user, password):
                       RETURN gds.util.asNode(nodeId).title AS paper_title, score
                       ORDER BY score DESC
                    """
-      result= session.run(algo_query2)
-      records = list(result)
-      summary = result.consume()
-      for record in records:
-         print(record)
+      run_query_and_export_to_csv(algo_query2, "page_rank", "page rank algorithm")
 
      # ALGORITHM 3- algorithm for betweenness score it finds the node that controls the flow. i.e. here it is the node that is being cited by a lot of papers and cites a lot of paper itself and functions as a bridge between 2 papers. It also means that the nodes with high betweenness scores are mostly found as an intermediate paper in the shortest path from one paper to another.
       print("----------------------------------")
@@ -75,11 +80,7 @@ def execute_queries(uri, user, password):
                       RETURN gds.util.asNode(nodeId).title AS paper_title, score AS betweenness_score
                       ORDER BY score DESC
                    """
-      result= session.run(algo_query3)
-      records = list(result)
-      summary = result.consume()
-      for record in records:
-         print(record)
+      run_query_and_export_to_csv(algo_query3, "betweenness", "betweenness algorithm")
 
       # ALGORITHM 4- algorithm for closeness score it finds the node that spreads information efficiently in the graph. It means that the nodes with high closeness scores are Papers that have the shortest distance to all other papers which is it can be thought of as the most referenced/cited paper which a lot of paper cites.
       print("--------------------------------")
@@ -92,13 +93,9 @@ def execute_queries(uri, user, password):
                       RETURN gds.util.asNode(nodeId).title AS paper_title, score AS AS closeness_score
                       ORDER BY score DESC
                    """
-      result= session.run(algo_query4)
-      records = list(result)
-      summary = result.consume()
-      for record in records:
-         print(record)
+      run_query_and_export_to_csv(algo_query1, "closeness", "closeness algorithm")
 
-      # ALGORITHM 5- using Dijkstra's shortest path (source to target) to find the shortest path in the citation networkn from a particular source paper to a particular target paper (if you want to use any other source or target paper just change the paper name in the query)
+      # ALGORITHM 5- using Dijkstra's shortest path (source to target) to find the shortest path in the citation network from a particular source paper to a particular target paper (if you want to use any other source or target paper just change the paper name in the query)
       print("------------------------------------------------------------------")
       print("ALGORITHM 5- Dijkstra's shortest path (source to target) RESULTS")
       print("------------------------------------------------------------------")
@@ -120,18 +117,14 @@ def execute_queries(uri, user, password):
                           [idx IN range(0, size(nodes(path))-1) | {nodeNum:idx, title: nodes(path)[idx].title, paperId: nodes(path)[idx].ID}] as path
                       ORDER BY totalCost
                    """
-      result= session.run(algo_query5)
-      records = list(result)
-      summary = result.consume()
-      for record in records:
-         print(record)
+      run_query_and_export_to_csv(algo_query5, "shortest_path_source_to_target", "Dijkstra's shortest path (source to target) algorithm")
 
       # ALGORITHM 6- using Dijkstra's shortest path (SSSP) to find the shortest path in the citation network from a particular source paper to all other papers in the network (if you want to use any other source paper just change the paper name in the query)
       print("------------------------------------------------------------------------------")
       print("ALGORITHM 6- Dijkstra's shortest path (SSSP) RESULTS")
       print("------------------------------------------------------------------------------")
       print("Running the graph algorithm on the projected graph...")
-      algo_query5= """MATCH (source:Paper {title: "Machine learning pipeline for battery state-of-health estimation"})
+      algo_query6= """MATCH (source:Paper {title: "Machine learning pipeline for battery state-of-health estimation"})
                       CALL gds.allShortestPaths.dijkstra.stream('proj_paper_cite', {
                           sourceNode: source
                       })
@@ -148,11 +141,7 @@ def execute_queries(uri, user, password):
                           [idx IN range(0, size(nodes(path))-1) | {nodeNum:idx, title: nodes(path)[idx].title, paperId: nodes(path)[idx].ID}] as path
                       ORDER BY totalCost 
                    """
-      result= session.run(algo_query5)
-      records = list(result)
-      summary = result.consume()
-      for record in records:
-         print(record)
+      run_query_and_export_to_csv(algo_query6, "SSSP", "Dijkstra's shortest path (SSSP) algorithm")
 
 if __name__ == "__main__":
     uri = "bolt://localhost:7687"
